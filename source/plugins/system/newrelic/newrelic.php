@@ -111,7 +111,11 @@ class plgSystemNewRelic extends JPlugin
             if ($application->isSite() == false) {
                 return false;
             }
-
+            //newrelic <script> messes up rss feeds
+            $format = JRequest::getCmd('format');
+            if (isset($format) && $format == 'feed'){
+            	return false;
+            }
             if(isset($_SERVER['PHP_SELF']) && strpos($_SERVER['PHP_SELF'], 'index.php') === false) {
                 return false;
             }
