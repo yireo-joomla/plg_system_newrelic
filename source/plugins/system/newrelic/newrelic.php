@@ -114,10 +114,10 @@ class plgSystemNewRelic extends JPlugin
 				return false;
 			}
 
-			//newrelic <script> messes up rss feeds
+			// NewRelic <script> messes up rss feeds
 			$format = $application->input->getCmd('format');
 
-			if (isset($format) && $format == 'feed')
+			if ($format === 'feed')
 			{
 				return false;
 			}
